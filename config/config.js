@@ -1,27 +1,26 @@
-require('dotenv').config();
+const config = require("../config");
 
 module.exports = {
-    port: process.env.PORT,
-    jwtSecret: process.env.JWT_SECRET,
-    db: {
-        development: {
-            username: process.env.DB_DEV_USERNAME,
-            password: process.env.DB_DEV_PASSWORD,
-            database: process.env.DB_DEV_DATABASE,
-            dialect: 'postgres',
-        },
-        test: {
-            username: process.env.DB_TEST_USERNAME,
-            password: process.env.DB_TEST_PASSWORD,
-            database: process.env.DB_TEST_DATABASE,
-            dialect: 'postgres',
-        },
-        production: {
-            url: process.env.DATABASE_URL,
-            username: process.env.PGUSER,
-            password: process.env.PGPASSWORD,
-            database: process.env.PGDATABASE,
-            dialect: 'postgres',
-        },
+    development: {
+        username: config.db.development.username,
+        password: config.db.development.password,
+        database: config.db.development.database,
+        host: "127.0.0.1",
+        dialect: config.db.development.dialect,
+    },
+    test: {
+        username: config.db.test.username,
+        password: config.db.test.password,
+        database: config.db.test.database,
+        host: "127.0.0.1",
+        dialect: config.db.test.dialect,
+    },
+    production: {
+        url: config.db.production.url,
+        use_env_variable: config.db.production.url,
+        dialect: "postgres",
+        protocol: "postgres",
+        ssl: true,
+        dialectOptions: { ssl: { require: true, rejectUnauthorized: false } },
     },
 };

@@ -1,4 +1,4 @@
-const config = require('../config/config.js');
+const config = require('../config');
 
 const JwtStrategy = require('passport-jwt').Strategy;
 const ExtractJwt = require('passport-jwt').ExtractJwt;

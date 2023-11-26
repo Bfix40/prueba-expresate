@@ -112,6 +112,7 @@ const deleteUser = async (req, res) => {
 };
 
 module.exports = {
+    registerUser,
     addUser,
     getAllUsers,
     getUserById,
